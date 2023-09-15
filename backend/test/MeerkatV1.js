@@ -28,7 +28,7 @@ describe('MeerkatV1', function () {
 		expect(_owner).to.equal(await owner.address);
 	});
 
-	it('should update competition', async function () {
+	it('should update competition user owns', async function () {
 		const { proxy, owner } = await loadFixture(deployContractAndSetVariables);
 		const compName = 'comp1';
 		const newName = 'newName';
@@ -41,6 +41,61 @@ describe('MeerkatV1', function () {
 		expect(_name).to.equal(newName);
 		expect(_id).to.equal(1);
 		expect(_owner).to.equal(await owner.address);
+	});
+
+	it('should not allow to update competition user does not own', async function () {
+		const { proxy, owner, other } = await loadFixture(
+			deployContractAndSetVariables
+		);
+		const compName = 'comp1';
+		const newName = 'newName';
+
+		await proxy.addCompetition(compName);
+
+		let errorMessageIsCorrect;
+		// switch user and try to update
+		try {
+			await proxy.connect(other).updateCompetition(1, newName);
+		} catch ({ err, message }) {
+			errorMessageIsCorrect = message.includes(
+				'Competition owned by this user does not exist!'
+			);
+		}
+
+		expect(errorMessageIsCorrect).to.be.true;
+	});
+
+	it('should delete competition user owns', async function () {
+		const { proxy } = await loadFixture(deployContractAndSetVariables);
+		const compName = 'comp1';
+
+		await proxy.addCompetition(compName);
+
+		await proxy.deleteCompetition(1);
+		const [_id, _owner, _name] = await proxy.getCompetition(1);
+
+		expect(_name).to.equal('');
+		expect(_id).to.equal(0);
+		expect(_owner).to.equal('0x0000000000000000000000000000000000000000');
+	});
+
+	it('should not allow to delete competition user does not own', async function () {
+		const { proxy, other } = await loadFixture(deployContractAndSetVariables);
+		const compName = 'comp1';
+
+		await proxy.addCompetition(compName);
+
+		let errorMessageIsCorrect;
+		// switch user and try to delete
+		try {
+			await proxy.connect(other).deleteCompetition(1);
+		} catch ({ err, message }) {
+			errorMessageIsCorrect = message.includes(
+				'Competition owned by this user does not exist!'
+			);
+		}
+
+		expect(errorMessageIsCorrect).to.be.true;
 	});
 
 	// games
