@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
+pragma abicoder v2;
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "hardhat/console.sol";
@@ -10,36 +11,34 @@ contract MeerkatV1 is Initializable {
         string name;
     }
 
-    enum Sport {
-        Soccer
-    }
-
     struct Game {
         uint id;
-        string home;
-        string away;
+        uint competitionId;
+        string homeCompetitor;
+        string awayCompetitor;
         uint startTime;
         uint8 homeScore;
         uint8 awayScore;
-        bool isStarted;
-        bool isFinished;
-        bool isCancelled;
     }
 
     struct Prediction {
         uint id;
+        uint gameId;
         uint8 homeScore;
         uint8 awayScore;
     }
 
     uint public lastCompetitionId;
+    uint public lastGameId;
     mapping (address => mapping(uint => Competition)) public competitions;
-    // mapping (address => mapping(uint => Game[])) public games;
+    mapping (uint => Game[]) public games;
 
     function initialize() public initializer {
-        lastCompetitionId = 0;
+        lastCompetitionId = 1;
+        lastGameId = 1;
     }
 
+    // competitions
     function addCompetition(string memory _name) public returns (uint) {
         uint compId = lastCompetitionId++;
         Competition memory competition = Competition(compId, msg.sender, _name);
@@ -47,8 +46,45 @@ contract MeerkatV1 is Initializable {
         return (competition.id);
     }
 
-    function getCompetition(uint compId) public view returns (uint, address, string memory) {
-        Competition memory competition = competitions[msg.sender][compId];
+    function getCompetition(uint _competitionId) public view returns (uint, address, string memory) {
+        Competition memory competition = competitions[msg.sender][_competitionId];
         return (competition.id, competition.owner, competition.name);
     }
+
+    function competitionExists(uint _competitionId) internal view returns (bool) {
+        Competition memory competition = competitions[msg.sender][_competitionId];
+
+        return competition.id != 0 
+            && competition.owner != address(0) 
+            && !compareStringsbyBytes(competition.name, '');
+    }
+
+    function updateCompetition(uint _competitionId, string memory _name) external {
+        require(competitionExists(_competitionId), 'Competition owned by this user does not exist!');
+
+        Competition storage competition = competitions[msg.sender][_competitionId];
+        competition.name = _name;
+    } 
+
+    // games
+    function addGame(
+        uint _competitionId, 
+        string memory _homeCompetitor, 
+        string memory _awayCompetitor, 
+        uint _startTime
+        ) public {
+        require(competitionExists(_competitionId), 'Competition owned by this user does not exist!');
+
+        Game memory newGame = Game(lastGameId++, _competitionId, _homeCompetitor, _awayCompetitor, _startTime, 0, 0);
+        games[_competitionId].push(newGame);
+    }
+
+    function getGames(uint _competitionId) public view returns (Game[] memory) {
+        Game[] memory gamesPerCompetition = games[_competitionId];
+        return gamesPerCompetition;
+    }
+
+    function compareStringsbyBytes(string memory s1, string memory s2) public pure returns(bool){
+    return keccak256(abi.encodePacked(s1)) == keccak256(abi.encodePacked(s2));
+}
 }
