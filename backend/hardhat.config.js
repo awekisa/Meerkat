@@ -1,9 +1,10 @@
 require('@nomicfoundation/hardhat-toolbox');
+require('@openzeppelin/hardhat-upgrades');
 require('dotenv').config();
 
 module.exports = {
 	solidity: {
-		version: '0.8.9',
+		version: '0.8.17',
 		settings: {
 			optimizer: {
 				enabled: true,
@@ -12,12 +13,12 @@ module.exports = {
 	},
 	allowUnlimitedContractSize: true,
 	networks: {
-		hardhat: {},
-		ETH_MAINNET: {
-			accounts: [`${process.env.PRIVATE_KEY}`],
-			url: `https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+		hardhat: {
+			accounts: {
+				count: 1000,
+			},
 		},
-		ETH_Sepolia: {
+		sepolia: {
 			accounts: [`${process.env.PRIVATE_KEY}`],
 			url: `https://eth-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
 		},
