@@ -46,12 +46,11 @@ contract MeerkatV1 is Initializable {
         return (competition.id);
     }
 
-    function getCompetition(uint _competitionId) external view returns (uint, address, string memory) {
-        Competition memory competition = competitions[msg.sender][_competitionId];
-        return (competition.id, competition.owner, competition.name);
+    function getCompetition(uint _competitionId) external view returns (Competition memory) {
+        return competitions[msg.sender][_competitionId];
     }
 
-    function competitionExists(uint _competitionId) internal view returns (bool) {
+    function competitionOwner(uint _competitionId) internal view returns (bool) {
         Competition memory competition = competitions[msg.sender][_competitionId];
 
         return competition.id != 0 
@@ -60,14 +59,14 @@ contract MeerkatV1 is Initializable {
     }
 
     function updateCompetition(uint _competitionId, string memory _name) external {
-        require(competitionExists(_competitionId), 'Competition owned by this user does not exist!');
+        require(competitionOwner(_competitionId), 'Competition owned by this user does not exist!');
 
         Competition storage competition = competitions[msg.sender][_competitionId];
         competition.name = _name;
     }
 
     function deleteCompetition(uint _competitionId) external {
-        require(competitionExists(_competitionId), 'Competition owned by this user does not exist!');
+        require(competitionOwner(_competitionId), 'Competition owned by this user does not exist!');
 
         delete competitions[msg.sender][_competitionId];
     }
@@ -79,7 +78,7 @@ contract MeerkatV1 is Initializable {
         string memory _awayCompetitor, 
         uint _startTime
         ) external {
-        require(competitionExists(_competitionId), 'Competition owned by this user does not exist!');
+        require(competitionOwner(_competitionId), 'Competition owned by this user does not exist!');
 
         Game memory newGame = Game(lastGameId++, _competitionId, _homeCompetitor, _awayCompetitor, _startTime, 0, 0);
         games[_competitionId].push(newGame);
@@ -90,7 +89,56 @@ contract MeerkatV1 is Initializable {
         return gamesPerCompetition;
     }
 
+    function updateGame(uint _competitionId, uint _gameId, string memory _homeCompetitor, string memory _awayCompetitor, uint _startTime, uint8 _homeScore, uint8 _awayScore) external {
+        require(competitionOwner(_competitionId), 'Competition owned by this user does not exist!');
+        
+        (bool exists, uint index) = gameExistsAt(_competitionId, _gameId);
+        require(exists, 'Game does not exist!');
+
+        Game storage game = games[_competitionId][index];
+        if (!compareStringsbyBytes(game.homeCompetitor, _homeCompetitor)) {
+            game.homeCompetitor = _homeCompetitor;
+        }
+        if (!compareStringsbyBytes(game.awayCompetitor, _awayCompetitor)) {
+            game.awayCompetitor = _awayCompetitor;
+        }
+        if (game.startTime != _startTime) {
+            game.startTime = _startTime;
+        }
+        if (game.homeScore != _homeScore) {
+            game.homeScore = _homeScore;
+        }
+        if (game.awayScore != _awayScore) {
+            game.awayScore = _awayScore;
+        }
+    }
+
+    function deleteGame(uint _competitionId, uint _gameId) external {
+        require(competitionOwner(_competitionId), 'Competition owned by this user does not exist!');
+        
+        (bool exists, uint index) = gameExistsAt(_competitionId, _gameId);
+        require(exists, 'Game does not exist!');
+
+        console.log(exists);
+        delete games[_competitionId][index];
+
+    }
+
+    function gameExistsAt(uint _competitionId, uint _gameId) internal view returns(bool, uint) {
+        Game[] storage competitionGames = games[_competitionId];
+        for (uint i = 0; i < competitionGames.length; i++) {
+            Game storage game = competitionGames[i];
+            if (game.id == _gameId) {
+                return (true, i);
+            }
+        }
+
+        return (false, 0);
+    }
+
     function compareStringsbyBytes(string memory s1, string memory s2) internal pure returns(bool){
     return keccak256(abi.encodePacked(s1)) == keccak256(abi.encodePacked(s2));
+
+    
 }
 }

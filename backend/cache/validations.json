@@ -78,6 +78,3151 @@
       "contracts/MeerkatV1.sol:MeerkatV1": {
         "src": "contracts\\MeerkatV1.sol:7",
         "version": {
+          "withMetadata": "dd785bd0e63c928aee28436481772ed0d9c9f32c6fa647f3d05726e0f1876237",
+          "withoutMetadata": "cb4290d66dcebd5cfbf97b01b9ff527bd11b206c25498ae1c528e3f18f05780b",
+          "linkedWithoutMetadata": "cb4290d66dcebd5cfbf97b01b9ff527bd11b206c25498ae1c528e3f18f05780b"
+        },
+        "inherit": [
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable"
+        ],
+        "libraries": [
+          "hardhat/console.sol:console"
+        ],
+        "methods": [
+          "initialize()",
+          "addCompetition(string)",
+          "getCompetition(uint256)",
+          "updateCompetition(uint256,string)",
+          "deleteCompetition(uint256)",
+          "addGame(uint256,string,string,uint256)",
+          "getGames(uint256)",
+          "updateGame(uint256,uint256,string,string,uint256,uint8,uint8)",
+          "deleteGame(uint256,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            },
+            {
+              "label": "lastCompetitionId",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:31"
+            },
+            {
+              "label": "lastGameId",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:32"
+            },
+            {
+              "label": "competitions",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:33"
+            },
+            {
+              "label": "games",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:34"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_struct(Game)527_storage)dyn_storage": {
+              "label": "struct MeerkatV1.Game[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))": {
+              "label": "mapping(address => mapping(uint256 => struct MeerkatV1.Competition))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Game[])",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(Competition)512_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Competition)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Competition)512_storage": {
+              "label": "struct MeerkatV1.Competition",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "owner",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                }
+              ],
+              "numberOfBytes": "96"
+            },
+            "t_struct(Game)527_storage": {
+              "label": "struct MeerkatV1.Game",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "competitionId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "homeCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "awayCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "startTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "homeScore",
+                  "type": "t_uint8",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "awayScore",
+                  "type": "t_uint8",
+                  "offset": 1,
+                  "slot": "5"
+                }
+              ],
+              "numberOfBytes": "192"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "hardhat/console.sol:console": {
+        "src": "hardhat\\console.sol:4",
+        "version": {
+          "withMetadata": "44804ea686cbd1a8fd0a3f552a1e19a2f593b0e5c89ef25a11b95cb6a636bb1b",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      }
+    },
+    {
+      "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:58",
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "7834828060f66da0039d30efb993f5f2643830d689ce2cdff803e8bbc308450e",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          },
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      },
+      "contracts/MeerkatV1.sol:MeerkatV1": {
+        "src": "contracts\\MeerkatV1.sol:7",
+        "version": {
+          "withMetadata": "ff4fa8ad0891a67cd3db9da6afbdcd5db78ca38235872df4c49e9f14fb1808ea",
+          "withoutMetadata": "a1f07635718a17bd4b70d2575f53bef5c45da2016ba37d11b83932ff99e2c1c4",
+          "linkedWithoutMetadata": "a1f07635718a17bd4b70d2575f53bef5c45da2016ba37d11b83932ff99e2c1c4"
+        },
+        "inherit": [
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable"
+        ],
+        "libraries": [
+          "hardhat/console.sol:console"
+        ],
+        "methods": [
+          "initialize()",
+          "addCompetition(string)",
+          "getCompetition(uint256)",
+          "updateCompetition(uint256,string)",
+          "deleteCompetition(uint256)",
+          "addGame(uint256,string,string,uint256)",
+          "getGames(uint256)",
+          "updateGame(uint256,uint256,string,string,uint256,uint8,uint8)",
+          "deleteGame(uint256,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            },
+            {
+              "label": "lastCompetitionId",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:31"
+            },
+            {
+              "label": "lastGameId",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:32"
+            },
+            {
+              "label": "competitions",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:33"
+            },
+            {
+              "label": "games",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:34"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_struct(Game)527_storage)dyn_storage": {
+              "label": "struct MeerkatV1.Game[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))": {
+              "label": "mapping(address => mapping(uint256 => struct MeerkatV1.Competition))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Game[])",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(Competition)512_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Competition)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Competition)512_storage": {
+              "label": "struct MeerkatV1.Competition",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "owner",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                }
+              ],
+              "numberOfBytes": "96"
+            },
+            "t_struct(Game)527_storage": {
+              "label": "struct MeerkatV1.Game",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "competitionId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "homeCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "awayCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "startTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "homeScore",
+                  "type": "t_uint8",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "awayScore",
+                  "type": "t_uint8",
+                  "offset": 1,
+                  "slot": "5"
+                }
+              ],
+              "numberOfBytes": "192"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "hardhat/console.sol:console": {
+        "src": "hardhat\\console.sol:4",
+        "version": {
+          "withMetadata": "44804ea686cbd1a8fd0a3f552a1e19a2f593b0e5c89ef25a11b95cb6a636bb1b",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      }
+    },
+    {
+      "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:58",
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "7834828060f66da0039d30efb993f5f2643830d689ce2cdff803e8bbc308450e",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          },
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      },
+      "contracts/MeerkatV1.sol:MeerkatV1": {
+        "src": "contracts\\MeerkatV1.sol:7",
+        "version": {
+          "withMetadata": "a4143460d7e546bada61eb4c8d085a4311636b7aa710ee221da0dbd66150a95c",
+          "withoutMetadata": "7dbc05eb195ea3430f47fae2fb63f7d9d9e64e04b3ba46b809ede8419aa17126",
+          "linkedWithoutMetadata": "7dbc05eb195ea3430f47fae2fb63f7d9d9e64e04b3ba46b809ede8419aa17126"
+        },
+        "inherit": [
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable"
+        ],
+        "libraries": [
+          "hardhat/console.sol:console"
+        ],
+        "methods": [
+          "initialize()",
+          "addCompetition(string)",
+          "getCompetition(uint256)",
+          "updateCompetition(uint256,string)",
+          "deleteCompetition(uint256)",
+          "addGame(uint256,string,string,uint256)",
+          "getGames(uint256)",
+          "updateGame(uint256,uint256,string,string,uint256,uint8,uint8)",
+          "deleteGame(uint256,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            },
+            {
+              "label": "lastCompetitionId",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:31"
+            },
+            {
+              "label": "lastGameId",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:32"
+            },
+            {
+              "label": "competitions",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:33"
+            },
+            {
+              "label": "games",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:34"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_struct(Game)527_storage)dyn_storage": {
+              "label": "struct MeerkatV1.Game[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))": {
+              "label": "mapping(address => mapping(uint256 => struct MeerkatV1.Competition))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Game[])",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(Competition)512_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Competition)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Competition)512_storage": {
+              "label": "struct MeerkatV1.Competition",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "owner",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                }
+              ],
+              "numberOfBytes": "96"
+            },
+            "t_struct(Game)527_storage": {
+              "label": "struct MeerkatV1.Game",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "competitionId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "homeCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "awayCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "startTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "homeScore",
+                  "type": "t_uint8",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "awayScore",
+                  "type": "t_uint8",
+                  "offset": 1,
+                  "slot": "5"
+                }
+              ],
+              "numberOfBytes": "192"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "hardhat/console.sol:console": {
+        "src": "hardhat\\console.sol:4",
+        "version": {
+          "withMetadata": "44804ea686cbd1a8fd0a3f552a1e19a2f593b0e5c89ef25a11b95cb6a636bb1b",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      }
+    },
+    {
+      "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:58",
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "7834828060f66da0039d30efb993f5f2643830d689ce2cdff803e8bbc308450e",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          },
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      },
+      "contracts/MeerkatV1.sol:MeerkatV1": {
+        "src": "contracts\\MeerkatV1.sol:7",
+        "version": {
+          "withMetadata": "2e2e4499c305a4ed0e4e132d38c2471cb07efe3c89d0580cca006f6551665d67",
+          "withoutMetadata": "c4dbb73512e986fa03f4c71648dca6742a65dbbac3812919fd08520abedbcb49",
+          "linkedWithoutMetadata": "c4dbb73512e986fa03f4c71648dca6742a65dbbac3812919fd08520abedbcb49"
+        },
+        "inherit": [
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable"
+        ],
+        "libraries": [],
+        "methods": [
+          "initialize()",
+          "addCompetition(string)",
+          "getCompetition(uint256)",
+          "updateCompetition(uint256,string)",
+          "deleteCompetition(uint256)",
+          "addGame(uint256,string,string,uint256)",
+          "getGames(uint256)",
+          "updateGame(uint256,uint256,string,string,uint256,uint8,uint8)",
+          "deleteGame(uint256,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            },
+            {
+              "label": "lastCompetitionId",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:31"
+            },
+            {
+              "label": "lastGameId",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:32"
+            },
+            {
+              "label": "competitions",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:33"
+            },
+            {
+              "label": "games",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:34"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_struct(Game)527_storage)dyn_storage": {
+              "label": "struct MeerkatV1.Game[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))": {
+              "label": "mapping(address => mapping(uint256 => struct MeerkatV1.Competition))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Game[])",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(Competition)512_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Competition)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Competition)512_storage": {
+              "label": "struct MeerkatV1.Competition",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "owner",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                }
+              ],
+              "numberOfBytes": "96"
+            },
+            "t_struct(Game)527_storage": {
+              "label": "struct MeerkatV1.Game",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "competitionId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "homeCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "awayCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "startTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "homeScore",
+                  "type": "t_uint8",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "awayScore",
+                  "type": "t_uint8",
+                  "offset": 1,
+                  "slot": "5"
+                }
+              ],
+              "numberOfBytes": "192"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "hardhat/console.sol:console": {
+        "src": "hardhat\\console.sol:4",
+        "version": {
+          "withMetadata": "44804ea686cbd1a8fd0a3f552a1e19a2f593b0e5c89ef25a11b95cb6a636bb1b",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      }
+    },
+    {
+      "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:58",
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "7834828060f66da0039d30efb993f5f2643830d689ce2cdff803e8bbc308450e",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          },
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      },
+      "contracts/MeerkatV1.sol:MeerkatV1": {
+        "src": "contracts\\MeerkatV1.sol:7",
+        "version": {
+          "withMetadata": "cbc600c6d82f186b5ff5903e6c7510456a3b442ed441d70757acd944c3d1e62a",
+          "withoutMetadata": "ef8ae1758f30ff351763d34d624faaf0c38f75b5bd8586e55b8ac57819b0b321",
+          "linkedWithoutMetadata": "ef8ae1758f30ff351763d34d624faaf0c38f75b5bd8586e55b8ac57819b0b321"
+        },
+        "inherit": [
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable"
+        ],
+        "libraries": [],
+        "methods": [
+          "initialize()",
+          "addCompetition(string)",
+          "getCompetition(uint256)",
+          "updateCompetition(uint256,string)",
+          "deleteCompetition(uint256)",
+          "addGame(uint256,string,string,uint256)",
+          "getGames(uint256)",
+          "updateGame(uint256,uint256,string,string,uint256,uint8,uint8)",
+          "deleteGame(uint256,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            },
+            {
+              "label": "lastCompetitionId",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:31"
+            },
+            {
+              "label": "lastGameId",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:32"
+            },
+            {
+              "label": "competitions",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:33"
+            },
+            {
+              "label": "games",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:34"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_struct(Game)527_storage)dyn_storage": {
+              "label": "struct MeerkatV1.Game[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))": {
+              "label": "mapping(address => mapping(uint256 => struct MeerkatV1.Competition))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Game[])",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(Competition)512_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Competition)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Competition)512_storage": {
+              "label": "struct MeerkatV1.Competition",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "owner",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                }
+              ],
+              "numberOfBytes": "96"
+            },
+            "t_struct(Game)527_storage": {
+              "label": "struct MeerkatV1.Game",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "competitionId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "homeCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "awayCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "startTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "homeScore",
+                  "type": "t_uint8",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "awayScore",
+                  "type": "t_uint8",
+                  "offset": 1,
+                  "slot": "5"
+                }
+              ],
+              "numberOfBytes": "192"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "hardhat/console.sol:console": {
+        "src": "hardhat\\console.sol:4",
+        "version": {
+          "withMetadata": "44804ea686cbd1a8fd0a3f552a1e19a2f593b0e5c89ef25a11b95cb6a636bb1b",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      }
+    },
+    {
+      "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:58",
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "7834828060f66da0039d30efb993f5f2643830d689ce2cdff803e8bbc308450e",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          },
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      },
+      "contracts/MeerkatV1.sol:MeerkatV1": {
+        "src": "contracts\\MeerkatV1.sol:7",
+        "version": {
+          "withMetadata": "6b6c50ad2777babdba3bbd044fd7678cea75ca37afb4bb15798be938350d6a6c",
+          "withoutMetadata": "230680d0fc66ba6c095e713d7fd2afe68b4e36e6af1984c00f5b484b063cf96e",
+          "linkedWithoutMetadata": "230680d0fc66ba6c095e713d7fd2afe68b4e36e6af1984c00f5b484b063cf96e"
+        },
+        "inherit": [
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable"
+        ],
+        "libraries": [],
+        "methods": [
+          "initialize()",
+          "addCompetition(string)",
+          "getCompetition(uint256)",
+          "updateCompetition(uint256,string)",
+          "deleteCompetition(uint256)",
+          "addGame(uint256,string,string,uint256)",
+          "getGames(uint256)",
+          "updateGame(uint256,uint256,string,string,uint256,uint8,uint8)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            },
+            {
+              "label": "lastCompetitionId",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:31"
+            },
+            {
+              "label": "lastGameId",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:32"
+            },
+            {
+              "label": "competitions",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:33"
+            },
+            {
+              "label": "games",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:34"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_struct(Game)527_storage)dyn_storage": {
+              "label": "struct MeerkatV1.Game[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))": {
+              "label": "mapping(address => mapping(uint256 => struct MeerkatV1.Competition))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Game[])",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(Competition)512_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Competition)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Competition)512_storage": {
+              "label": "struct MeerkatV1.Competition",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "owner",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                }
+              ],
+              "numberOfBytes": "96"
+            },
+            "t_struct(Game)527_storage": {
+              "label": "struct MeerkatV1.Game",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "competitionId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "homeCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "awayCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "startTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "homeScore",
+                  "type": "t_uint8",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "awayScore",
+                  "type": "t_uint8",
+                  "offset": 1,
+                  "slot": "5"
+                }
+              ],
+              "numberOfBytes": "192"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "hardhat/console.sol:console": {
+        "src": "hardhat\\console.sol:4",
+        "version": {
+          "withMetadata": "44804ea686cbd1a8fd0a3f552a1e19a2f593b0e5c89ef25a11b95cb6a636bb1b",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      }
+    },
+    {
+      "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:58",
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "7834828060f66da0039d30efb993f5f2643830d689ce2cdff803e8bbc308450e",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          },
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      },
+      "contracts/MeerkatV1.sol:MeerkatV1": {
+        "src": "contracts\\MeerkatV1.sol:7",
+        "version": {
+          "withMetadata": "ab23e2d8cc963b0add0694ffe560b9f0b0f29a2550abf1ac8bf0dd2aae29d029",
+          "withoutMetadata": "d59527e4781ad4d1c7f87c19495657e72a89781d7d8233c2a61789b2739f8070",
+          "linkedWithoutMetadata": "d59527e4781ad4d1c7f87c19495657e72a89781d7d8233c2a61789b2739f8070"
+        },
+        "inherit": [
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable"
+        ],
+        "libraries": [],
+        "methods": [
+          "initialize()",
+          "addCompetition(string)",
+          "getCompetition(uint256)",
+          "updateCompetition(uint256,string)",
+          "deleteCompetition(uint256)",
+          "addGame(uint256,string,string,uint256)",
+          "getGames(uint256)",
+          "updateGame(uint256,uint256,string,string,uint256,uint8,uint8)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            },
+            {
+              "label": "lastCompetitionId",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:31"
+            },
+            {
+              "label": "lastGameId",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:32"
+            },
+            {
+              "label": "competitions",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:33"
+            },
+            {
+              "label": "games",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:34"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_struct(Game)527_storage)dyn_storage": {
+              "label": "struct MeerkatV1.Game[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))": {
+              "label": "mapping(address => mapping(uint256 => struct MeerkatV1.Competition))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Game[])",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(Competition)512_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Competition)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Competition)512_storage": {
+              "label": "struct MeerkatV1.Competition",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "owner",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                }
+              ],
+              "numberOfBytes": "96"
+            },
+            "t_struct(Game)527_storage": {
+              "label": "struct MeerkatV1.Game",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "competitionId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "homeCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "awayCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "startTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "homeScore",
+                  "type": "t_uint8",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "awayScore",
+                  "type": "t_uint8",
+                  "offset": 1,
+                  "slot": "5"
+                }
+              ],
+              "numberOfBytes": "192"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "hardhat/console.sol:console": {
+        "src": "hardhat\\console.sol:4",
+        "version": {
+          "withMetadata": "44804ea686cbd1a8fd0a3f552a1e19a2f593b0e5c89ef25a11b95cb6a636bb1b",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      }
+    },
+    {
+      "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:58",
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "7834828060f66da0039d30efb993f5f2643830d689ce2cdff803e8bbc308450e",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          },
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      },
+      "contracts/MeerkatV1.sol:MeerkatV1": {
+        "src": "contracts\\MeerkatV1.sol:7",
+        "version": {
+          "withMetadata": "17934b0852488a16035a8508ac894a74a0abf7822eb164eb656cfa67d84b8a77",
+          "withoutMetadata": "bbfa8cf6fc77d0e30cc04552a259006a63bae9af6e5cbcbe16e0fb6f5823b900",
+          "linkedWithoutMetadata": "bbfa8cf6fc77d0e30cc04552a259006a63bae9af6e5cbcbe16e0fb6f5823b900"
+        },
+        "inherit": [
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable"
+        ],
+        "libraries": [],
+        "methods": [
+          "initialize()",
+          "addCompetition(string)",
+          "getCompetition(uint256)",
+          "updateCompetition(uint256,string)",
+          "deleteCompetition(uint256)",
+          "addGame(uint256,string,string,uint256)",
+          "getGames(uint256)",
+          "updateGame(uint256,uint256,string,string,uint256,uint8,uint8)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            },
+            {
+              "label": "lastCompetitionId",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:31"
+            },
+            {
+              "label": "lastGameId",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:32"
+            },
+            {
+              "label": "competitions",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:33"
+            },
+            {
+              "label": "games",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:34"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_struct(Game)527_storage)dyn_storage": {
+              "label": "struct MeerkatV1.Game[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))": {
+              "label": "mapping(address => mapping(uint256 => struct MeerkatV1.Competition))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Game[])",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(Competition)512_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Competition)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Competition)512_storage": {
+              "label": "struct MeerkatV1.Competition",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "owner",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                }
+              ],
+              "numberOfBytes": "96"
+            },
+            "t_struct(Game)527_storage": {
+              "label": "struct MeerkatV1.Game",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "competitionId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "homeCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "awayCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "startTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "homeScore",
+                  "type": "t_uint8",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "awayScore",
+                  "type": "t_uint8",
+                  "offset": 1,
+                  "slot": "5"
+                }
+              ],
+              "numberOfBytes": "192"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "hardhat/console.sol:console": {
+        "src": "hardhat\\console.sol:4",
+        "version": {
+          "withMetadata": "44804ea686cbd1a8fd0a3f552a1e19a2f593b0e5c89ef25a11b95cb6a636bb1b",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      }
+    },
+    {
+      "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:58",
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "7834828060f66da0039d30efb993f5f2643830d689ce2cdff803e8bbc308450e",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          },
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      },
+      "contracts/MeerkatV1.sol:MeerkatV1": {
+        "src": "contracts\\MeerkatV1.sol:7",
+        "version": {
+          "withMetadata": "93f1ed770471bf5cd3e43e47c86c405edd358e405e26eea56428e32815920917",
+          "withoutMetadata": "8dc8cf8af4875b6bb17d2707050b8d387421a5eb847955be86dce420e2cd5807",
+          "linkedWithoutMetadata": "8dc8cf8af4875b6bb17d2707050b8d387421a5eb847955be86dce420e2cd5807"
+        },
+        "inherit": [
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable"
+        ],
+        "libraries": [],
+        "methods": [
+          "initialize()",
+          "addCompetition(string)",
+          "getCompetition(uint256)",
+          "updateCompetition(uint256,string)",
+          "deleteCompetition(uint256)",
+          "addGame(uint256,string,string,uint256)",
+          "getGames(uint256)",
+          "updateGame(uint256,uint256,string,string,uint256,uint8,uint8)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            },
+            {
+              "label": "lastCompetitionId",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:31"
+            },
+            {
+              "label": "lastGameId",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:32"
+            },
+            {
+              "label": "competitions",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:33"
+            },
+            {
+              "label": "games",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:34"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_struct(Game)527_storage)dyn_storage": {
+              "label": "struct MeerkatV1.Game[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))": {
+              "label": "mapping(address => mapping(uint256 => struct MeerkatV1.Competition))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Game[])",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(Competition)512_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Competition)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Competition)512_storage": {
+              "label": "struct MeerkatV1.Competition",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "owner",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                }
+              ],
+              "numberOfBytes": "96"
+            },
+            "t_struct(Game)527_storage": {
+              "label": "struct MeerkatV1.Game",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "competitionId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "homeCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "awayCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "startTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "homeScore",
+                  "type": "t_uint8",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "awayScore",
+                  "type": "t_uint8",
+                  "offset": 1,
+                  "slot": "5"
+                }
+              ],
+              "numberOfBytes": "192"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "hardhat/console.sol:console": {
+        "src": "hardhat\\console.sol:4",
+        "version": {
+          "withMetadata": "44804ea686cbd1a8fd0a3f552a1e19a2f593b0e5c89ef25a11b95cb6a636bb1b",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      }
+    },
+    {
+      "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:58",
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "7834828060f66da0039d30efb993f5f2643830d689ce2cdff803e8bbc308450e",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          },
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      },
+      "contracts/MeerkatV1.sol:MeerkatV1": {
+        "src": "contracts\\MeerkatV1.sol:7",
+        "version": {
+          "withMetadata": "22e24179b73ba7811b7ffb953001d4122de3813a4524e7b6cd66be67b67485c7",
+          "withoutMetadata": "7918d585d1b904285f5f841c100c9f521ccdd0cf7bd98071dff98297a605b7f7",
+          "linkedWithoutMetadata": "7918d585d1b904285f5f841c100c9f521ccdd0cf7bd98071dff98297a605b7f7"
+        },
+        "inherit": [
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable"
+        ],
+        "libraries": [],
+        "methods": [
+          "initialize()",
+          "addCompetition(string)",
+          "getCompetition(uint256)",
+          "updateCompetition(uint256,string)",
+          "deleteCompetition(uint256)",
+          "addGame(uint256,string,string,uint256)",
+          "getGames(uint256)",
+          "updateGame(uint256,uint256,string,string,uint256,uint8,uint8)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            },
+            {
+              "label": "lastCompetitionId",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:31"
+            },
+            {
+              "label": "lastGameId",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:32"
+            },
+            {
+              "label": "competitions",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:33"
+            },
+            {
+              "label": "games",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:34"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_struct(Game)527_storage)dyn_storage": {
+              "label": "struct MeerkatV1.Game[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))": {
+              "label": "mapping(address => mapping(uint256 => struct MeerkatV1.Competition))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Game[])",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(Competition)512_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Competition)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Competition)512_storage": {
+              "label": "struct MeerkatV1.Competition",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "owner",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                }
+              ],
+              "numberOfBytes": "96"
+            },
+            "t_struct(Game)527_storage": {
+              "label": "struct MeerkatV1.Game",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "competitionId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "homeCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "awayCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "startTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "homeScore",
+                  "type": "t_uint8",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "awayScore",
+                  "type": "t_uint8",
+                  "offset": 1,
+                  "slot": "5"
+                }
+              ],
+              "numberOfBytes": "192"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "hardhat/console.sol:console": {
+        "src": "hardhat\\console.sol:4",
+        "version": {
+          "withMetadata": "44804ea686cbd1a8fd0a3f552a1e19a2f593b0e5c89ef25a11b95cb6a636bb1b",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      }
+    },
+    {
+      "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:58",
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "7834828060f66da0039d30efb993f5f2643830d689ce2cdff803e8bbc308450e",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          },
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      },
+      "contracts/MeerkatV1.sol:MeerkatV1": {
+        "src": "contracts\\MeerkatV1.sol:7",
+        "version": {
+          "withMetadata": "5931d28ce1f45ccb23a81abf7ce3c2b64eccc0cd95b5195612aeaa50d17fcf3c",
+          "withoutMetadata": "2fc11e5d8a28c85e7a9212bb7bbde7a838d60f5aa199b8d4515e22090df4a2d1",
+          "linkedWithoutMetadata": "2fc11e5d8a28c85e7a9212bb7bbde7a838d60f5aa199b8d4515e22090df4a2d1"
+        },
+        "inherit": [
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable"
+        ],
+        "libraries": [],
+        "methods": [
+          "initialize()",
+          "addCompetition(string)",
+          "getCompetition(uint256)",
+          "updateCompetition(uint256,string)",
+          "deleteCompetition(uint256)",
+          "addGame(uint256,string,string,uint256)",
+          "getGames(uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            },
+            {
+              "label": "lastCompetitionId",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:31"
+            },
+            {
+              "label": "lastGameId",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:32"
+            },
+            {
+              "label": "competitions",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:33"
+            },
+            {
+              "label": "games",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)",
+              "contract": "MeerkatV1",
+              "src": "contracts\\MeerkatV1.sol:34"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_struct(Game)527_storage)dyn_storage": {
+              "label": "struct MeerkatV1.Game[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_struct(Competition)512_storage))": {
+              "label": "mapping(address => mapping(uint256 => struct MeerkatV1.Competition))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_array(t_struct(Game)527_storage)dyn_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Game[])",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(Competition)512_storage)": {
+              "label": "mapping(uint256 => struct MeerkatV1.Competition)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Competition)512_storage": {
+              "label": "struct MeerkatV1.Competition",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "owner",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                }
+              ],
+              "numberOfBytes": "96"
+            },
+            "t_struct(Game)527_storage": {
+              "label": "struct MeerkatV1.Game",
+              "members": [
+                {
+                  "label": "id",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "competitionId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "homeCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "awayCompetitor",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "startTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "homeScore",
+                  "type": "t_uint8",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "awayScore",
+                  "type": "t_uint8",
+                  "offset": 1,
+                  "slot": "5"
+                }
+              ],
+              "numberOfBytes": "192"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "hardhat/console.sol:console": {
+        "src": "hardhat\\console.sol:4",
+        "version": {
+          "withMetadata": "44804ea686cbd1a8fd0a3f552a1e19a2f593b0e5c89ef25a11b95cb6a636bb1b",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      }
+    },
+    {
+      "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:58",
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.17"
+      },
+      "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable": {
+        "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "7834828060f66da0039d30efb993f5f2643830d689ce2cdff803e8bbc308450e",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          },
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\AddressUpgradeable.sol:185"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.17"
+      },
+      "contracts/MeerkatV1.sol:MeerkatV1": {
+        "src": "contracts\\MeerkatV1.sol:7",
+        "version": {
           "withMetadata": "f9c0c4bfc396d99debd7d8eee3c2de2cac6e39955f44863c4e4acecc92eeb84d",
           "withoutMetadata": "bba8112cdc86149b1245838f2086d2e1b1e7a724d02a86b4b41d1e2c4830ed46",
           "linkedWithoutMetadata": "bba8112cdc86149b1245838f2086d2e1b1e7a724d02a86b4b41d1e2c4830ed46"

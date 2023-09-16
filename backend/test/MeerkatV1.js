@@ -28,7 +28,7 @@ describe('MeerkatV1', function () {
 		expect(_owner).to.equal(await owner.address);
 	});
 
-	it('should update competition user owns', async function () {
+	it('should update own competition', async function () {
 		const { proxy, owner } = await loadFixture(deployContractAndSetVariables);
 		const compName = 'comp1';
 		const newName = 'newName';
@@ -36,14 +36,14 @@ describe('MeerkatV1', function () {
 		await proxy.addCompetition(compName);
 
 		await proxy.updateCompetition(1, newName);
-		const [_id, _owner, _name] = await proxy.getCompetition(1);
+		const competition = await proxy.getCompetition(1);
 
-		expect(_name).to.equal(newName);
-		expect(_id).to.equal(1);
-		expect(_owner).to.equal(await owner.address);
+		expect(competition.name).to.equal(newName);
+		expect(competition.id).to.equal(1);
+		expect(competition.owner).to.equal(await owner.address);
 	});
 
-	it('should not allow to update competition user does not own', async function () {
+	it('should throw when updating non-owned competition', async function () {
 		const { proxy, owner, other } = await loadFixture(
 			deployContractAndSetVariables
 		);
@@ -65,21 +65,23 @@ describe('MeerkatV1', function () {
 		expect(errorMessageIsCorrect).to.be.true;
 	});
 
-	it('should delete competition user owns', async function () {
+	it('should delete own competition', async function () {
 		const { proxy } = await loadFixture(deployContractAndSetVariables);
 		const compName = 'comp1';
 
 		await proxy.addCompetition(compName);
 
 		await proxy.deleteCompetition(1);
-		const [_id, _owner, _name] = await proxy.getCompetition(1);
+		const competition = await proxy.getCompetition(1);
 
-		expect(_name).to.equal('');
-		expect(_id).to.equal(0);
-		expect(_owner).to.equal('0x0000000000000000000000000000000000000000');
+		expect(competition.name).to.equal('');
+		expect(competition.id).to.equal(0);
+		expect(competition.owner).to.equal(
+			'0x0000000000000000000000000000000000000000'
+		);
 	});
 
-	it('should not allow to delete competition user does not own', async function () {
+	it('should throw when deleteing non-owned competition', async function () {
 		const { proxy, other } = await loadFixture(deployContractAndSetVariables);
 		const compName = 'comp1';
 
@@ -99,53 +101,16 @@ describe('MeerkatV1', function () {
 	});
 
 	// games
-	it('should not allow to add game to non-existant competition!', async () => {
-		const { proxy } = await loadFixture(deployContractAndSetVariables);
-		let errorMessageIsCorrect;
-		try {
-			await proxy.addGame(111, 'Real', 'Betis', Date.now());
-		} catch ({ ex, message }) {
-			errorMessageIsCorrect = message.includes(
-				'Competition owned by this user does not exist!'
-			);
-		}
-
-		expect(errorMessageIsCorrect).to.be.true;
-	});
-
-	it('should not allow to add game to non-owned competition', async function () {
-		const { proxy, owner, other } = await loadFixture(
-			deployContractAndSetVariables
-		);
-		const compName = 'comp1';
-		// add competition
-		await proxy.connect(owner).addCompetition(compName);
-
-		const date = Date.now();
-
-		let errorMessageIsCorrect;
-		// change signer
-		try {
-			await proxy.connect(other).addGame(1, 'Real', 'Betis', date);
-		} catch ({ ex, message }) {
-			errorMessageIsCorrect = message.includes(
-				'Competition owned by this user does not exist!'
-			);
-		}
-
-		expect(errorMessageIsCorrect).to.be.true;
-	});
-
-	it('should add game to your competition', async function () {
+	it('should add game to own competition', async function () {
 		const { proxy } = await loadFixture(deployContractAndSetVariables);
 		const compName = 'comp1';
 		await proxy.addCompetition(compName);
 
-		const date = Date.now();
+		const startTime = Date.now();
 
-		await proxy.addGame(1, 'Real', 'Betis', date);
-		await proxy.addGame(1, 'Arsenal', 'Newcastle', date);
-		await proxy.addGame(1, 'Nice', 'PSG', date);
+		await proxy.addGame(1, 'Real', 'Betis', startTime);
+		await proxy.addGame(1, 'Arsenal', 'Newcastle', startTime);
+		await proxy.addGame(1, 'Nice', 'PSG', startTime);
 
 		const games = await proxy.getGames(1);
 
@@ -182,7 +147,7 @@ describe('MeerkatV1', function () {
 		expect(firstCompetitionId).to.equal(1);
 		expect(firstHomeCompetitor).to.equal('Real');
 		expect(firstAwayCompetitor).to.equal('Betis');
-		expect(firstStartTime).to.equal(date);
+		expect(firstStartTime).to.equal(startTime);
 		expect(firstHomeScore).to.equal(0);
 		expect(firstAwayScore).to.equal(0);
 
@@ -190,7 +155,7 @@ describe('MeerkatV1', function () {
 		expect(secondCompetitionId).to.equal(1);
 		expect(secondHomeCompetitor).to.equal('Arsenal');
 		expect(secondAwayCompetitor).to.equal('Newcastle');
-		expect(secondStartTime).to.equal(date);
+		expect(secondStartTime).to.equal(startTime);
 		expect(secondHomeScore).to.equal(0);
 		expect(secondAwayScore).to.equal(0);
 
@@ -198,8 +163,186 @@ describe('MeerkatV1', function () {
 		expect(thirdCompetitionId).to.equal(1);
 		expect(thirdHomeCompetitor).to.equal('Nice');
 		expect(thirdAwayCompetitor).to.equal('PSG');
-		expect(thirdStartTime).to.equal(date);
+		expect(thirdStartTime).to.equal(startTime);
 		expect(thirdHomeScore).to.equal(0);
 		expect(thirdAwayScore).to.equal(0);
+	});
+
+	it('should throw when adding game to non-existant competition', async () => {
+		const { proxy } = await loadFixture(deployContractAndSetVariables);
+		let errorMessageIsCorrect;
+		try {
+			await proxy.addGame(111, 'Real', 'Betis', Date.now());
+		} catch ({ ex, message }) {
+			errorMessageIsCorrect = message.includes(
+				'Competition owned by this user does not exist!'
+			);
+		}
+
+		expect(errorMessageIsCorrect).to.be.true;
+	});
+
+	it('should throw when adding game to non-owned competition', async function () {
+		const { proxy, owner, other } = await loadFixture(
+			deployContractAndSetVariables
+		);
+		const compName = 'comp1';
+		// add competition
+		await proxy.connect(owner).addCompetition(compName);
+
+		let errorMessageIsCorrect;
+		// change signer
+		try {
+			await proxy.connect(other).addGame(1, 'Real', 'Betis', Date.now());
+		} catch ({ ex, message }) {
+			errorMessageIsCorrect = message.includes(
+				'Competition owned by this user does not exist!'
+			);
+		}
+
+		expect(errorMessageIsCorrect).to.be.true;
+	});
+
+	it('should update game in own competition', async () => {
+		const { proxy } = await loadFixture(deployContractAndSetVariables);
+		const compName = 'comp1';
+		await proxy.addCompetition(compName);
+		const startTime = Date.now();
+		await proxy.addGame(1, 'Real', 'Betis', startTime);
+
+		const updatedStartTime = startTime + 1000;
+		const tx = await proxy.updateGame(
+			1,
+			1,
+			'Liverpool',
+			'Aston Villa',
+			updatedStartTime,
+			3,
+			3
+		);
+		await tx.wait();
+		const games = await proxy.getGames(1);
+
+		const [
+			firstId,
+			firstCompetitionId,
+			firstHomeCompetitor,
+			firstAwayCompetitor,
+			firstStartTime,
+			firstHomeScore,
+			firstAwayScore,
+		] = games[0];
+
+		expect(games.length).to.equal(1);
+		expect(firstId).to.equal(1);
+		expect(firstCompetitionId).to.equal(1);
+		expect(firstHomeCompetitor).to.equal('Liverpool');
+		expect(firstAwayCompetitor).to.equal('Aston Villa');
+		expect(firstStartTime).to.equal(updatedStartTime);
+		expect(firstHomeScore).to.equal(3);
+		expect(firstAwayScore).to.equal(3);
+	});
+
+	it('should throw when updating game in non-owned competition', async () => {
+		const { proxy, owner, other } = await loadFixture(
+			deployContractAndSetVariables
+		);
+		let errorMessageIsCorrect;
+		try {
+			await proxy.connect(owner).addCompetition('Some Competition');
+			await proxy.addGame(1, 'Real', 'Betis', Date.now());
+			await proxy
+				.connect(other)
+				.updateGame(1, 111, 'Real2', 'Betis2', Date.now(), 1, 1);
+		} catch ({ ex, message }) {
+			errorMessageIsCorrect = message.includes(
+				'Competition owned by this user does not exist!'
+			);
+		}
+
+		expect(errorMessageIsCorrect).to.be.true;
+	});
+
+	it('should throw when updating game that does not exist', async () => {
+		const { proxy, owner, other } = await loadFixture(
+			deployContractAndSetVariables
+		);
+		let errorMessageIsCorrect;
+		try {
+			await proxy.addCompetition('Some Competition');
+			await proxy.addGame(1, 'Real', 'Betis', Date.now());
+			await proxy.updateGame(1, 111, 'Real', 'Betis', Date.now(), 2, 3);
+		} catch ({ ex, message }) {
+			errorMessageIsCorrect = message.includes('Game does not exist!');
+		}
+
+		expect(errorMessageIsCorrect).to.be.true;
+	});
+
+	it('should delete game in own competition', async () => {
+		const { proxy } = await loadFixture(deployContractAndSetVariables);
+		const compName = 'comp1';
+		await proxy.addCompetition(compName);
+		const startTime = Date.now();
+		await proxy.addGame(1, 'Real', 'Betis', startTime);
+		await proxy.addGame(1, 'Arsenal', 'Wolves', startTime);
+		await proxy.addGame(1, 'Man City', 'PSG', startTime);
+
+		await proxy.deleteGame(1, 2);
+
+		const games = await proxy.getGames(1);
+
+		const [
+			deletedId,
+			deletedCompetitionId,
+			deletedHomeCompetitor,
+			deletedAwayCompetitor,
+			deletedStartTime,
+			deletedHomeScore,
+			deletedAwayScore,
+		] = games[1];
+
+		expect(games.length).to.equal(3);
+		expect(deletedId).to.equal(0);
+		expect(deletedCompetitionId).to.equal(0);
+		expect(deletedHomeCompetitor).to.equal('');
+		expect(deletedAwayCompetitor).to.equal('');
+		expect(deletedStartTime).to.equal(0);
+		expect(deletedHomeScore).to.equal(0);
+		expect(deletedAwayScore).to.equal(0);
+	});
+
+	it('should throw when deleting game in non-owned competition', async () => {
+		const { proxy, owner, other } = await loadFixture(
+			deployContractAndSetVariables
+		);
+		let errorMessageIsCorrect;
+		try {
+			await proxy.connect(owner).addCompetition('Some Competition');
+			await proxy.addGame(1, 'Real', 'Betis', Date.now());
+			await proxy.connect(other).deleteGame(1, 111);
+		} catch ({ ex, message }) {
+			errorMessageIsCorrect = message.includes(
+				'Competition owned by this user does not exist!'
+			);
+		}
+
+		expect(errorMessageIsCorrect).to.be.true;
+	});
+
+	it('should throw when deleting game that does not exist', async () => {
+		const { proxy, owner, other } = await loadFixture(
+			deployContractAndSetVariables
+		);
+		let errorMessageIsCorrect;
+		try {
+			await proxy.addCompetition('Some Competition');
+			await proxy.addGame(1, 'Real', 'Betis', Date.now());
+			await proxy.deleteGame(1, 111);
+		} catch ({ ex, message }) {
+			errorMessageIsCorrect = message.includes('Game does not exist!');
+		}
+
+		expect(errorMessageIsCorrect).to.be.true;
 	});
 });

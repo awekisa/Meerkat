@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Projects\\AlchemyUniversity\\Meerkat\\meerkat\\backend\\contracts\\MeerkatV1.sol": {
-      "lastModificationDate": 1694808058969,
-      "contentHash": "0a07f8cfa2cc59a1b472d7ca6cfe2f66",
+      "lastModificationDate": 1694864652266,
+      "contentHash": "75d90a2fd63cbe7b94c04c7df5ab0408",
       "sourceName": "contracts/MeerkatV1.sol",
       "solcConfig": {
         "version": "0.8.17",
