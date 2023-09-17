@@ -345,4 +345,76 @@ describe('MeerkatV1', function () {
 
 		expect(errorMessageIsCorrect).to.be.true;
 	});
+
+	// predictions
+	it('should add prediction', async function () {
+		const { proxy } = await loadFixture(deployContractAndSetVariables);
+		const compName = 'comp1';
+		await proxy.addCompetition(compName);
+
+		const startTime = Date.now();
+
+		await proxy.addGame(1, 'Real', 'Betis', startTime);
+		await proxy.addGame(1, 'Arsenal', 'Newcastle', startTime);
+		await proxy.addGame(1, 'Nice', 'PSG', startTime);
+
+		await proxy.addPrediction(1, 1, 3, 2);
+		await proxy.addPrediction(1, 2, 2, 1);
+		await proxy.addPrediction(1, 3, 2, 2);
+
+		const games = await proxy.getPredictions(1);
+
+		const [
+			firstId,
+			firstCompetitionId,
+			firstHomeCompetitor,
+			firstAwayCompetitor,
+			firstStartTime,
+			firstHomeScore,
+			firstAwayScore,
+		] = games[0];
+		const [
+			secondId,
+			secondCompetitionId,
+			secondHomeCompetitor,
+			secondAwayCompetitor,
+			secondStartTime,
+			secondHomeScore,
+			secondAwayScore,
+		] = games[1];
+		const [
+			thirdId,
+			thirdCompetitionId,
+			thirdHomeCompetitor,
+			thirdAwayCompetitor,
+			thirdStartTime,
+			thirdHomeScore,
+			thirdAwayScore,
+		] = games[2];
+
+		expect(games.length).to.equal(3);
+		expect(firstId).to.equal(1);
+		expect(firstCompetitionId).to.equal(1);
+		expect(firstHomeCompetitor).to.equal('Real');
+		expect(firstAwayCompetitor).to.equal('Betis');
+		expect(firstStartTime).to.equal(startTime);
+		expect(firstHomeScore).to.equal(0);
+		expect(firstAwayScore).to.equal(0);
+
+		expect(secondId).to.equal(2);
+		expect(secondCompetitionId).to.equal(1);
+		expect(secondHomeCompetitor).to.equal('Arsenal');
+		expect(secondAwayCompetitor).to.equal('Newcastle');
+		expect(secondStartTime).to.equal(startTime);
+		expect(secondHomeScore).to.equal(0);
+		expect(secondAwayScore).to.equal(0);
+
+		expect(thirdId).to.equal(3);
+		expect(thirdCompetitionId).to.equal(1);
+		expect(thirdHomeCompetitor).to.equal('Nice');
+		expect(thirdAwayCompetitor).to.equal('PSG');
+		expect(thirdStartTime).to.equal(startTime);
+		expect(thirdHomeScore).to.equal(0);
+		expect(thirdAwayScore).to.equal(0);
+	});
 });
