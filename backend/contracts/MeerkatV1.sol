@@ -4,6 +4,7 @@ pragma abicoder v2;
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "hardhat/console.sol";
+
 contract MeerkatV1 is Initializable {
     struct Competition {
         uint id;
@@ -23,6 +24,7 @@ contract MeerkatV1 is Initializable {
 
     struct Prediction {
         uint id;
+        uint competitionId;
         uint gameId;
         uint8 homeScore;
         uint8 awayScore;
@@ -121,7 +123,6 @@ contract MeerkatV1 is Initializable {
 
         console.log(exists);
         delete games[_competitionId][index];
-
     }
 
     function gameExistsAt(uint _competitionId, uint _gameId) internal view returns(bool, uint) {
@@ -136,9 +137,7 @@ contract MeerkatV1 is Initializable {
         return (false, 0);
     }
 
-    function compareStringsbyBytes(string memory s1, string memory s2) internal pure returns(bool){
-    return keccak256(abi.encodePacked(s1)) == keccak256(abi.encodePacked(s2));
-
-    
-}
+    function compareStringsbyBytes(string memory s1, string memory s2) internal pure returns(bool) {
+        return keccak256(abi.encodePacked(s1)) == keccak256(abi.encodePacked(s2));
+    }
 }
