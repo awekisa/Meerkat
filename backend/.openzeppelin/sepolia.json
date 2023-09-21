@@ -1,0 +1,226 @@
+{
+  "manifestVersion": "3.2",
+  "proxies": [],
+  "impls": {
+    "d773881ea104f28c3d710620dfaac592bd489abc3a89871c9bc9a1d0619f1bab": {
+      "address": "0xE1c0025B0e69Dee7E0C55f4D76dDbD6c765B3565",
+      "txHash": "0x8e72ed693a51f03a802c37e801f8987176c6c293e5049d9dc21e72d19fd3d6c6",
+      "layout": {
+        "solcVersion": "0.8.17",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:68"
+          },
+          {
+            "label": "name",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_string_storage",
+            "contract": "MeerkatCompetitionV1",
+            "src": "contracts\\MeerkatCompetition.sol:33"
+          },
+          {
+            "label": "owner",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_address",
+            "contract": "MeerkatCompetitionV1",
+            "src": "contracts\\MeerkatCompetition.sol:34"
+          },
+          {
+            "label": "games",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_uint256,t_struct(Game)520_storage)",
+            "contract": "MeerkatCompetitionV1",
+            "src": "contracts\\MeerkatCompetition.sol:35"
+          },
+          {
+            "label": "gameIds",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_array(t_uint256)dyn_storage",
+            "contract": "MeerkatCompetitionV1",
+            "src": "contracts\\MeerkatCompetition.sol:36"
+          },
+          {
+            "label": "lastGameId",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256",
+            "contract": "MeerkatCompetitionV1",
+            "src": "contracts\\MeerkatCompetition.sol:37"
+          },
+          {
+            "label": "predictions",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_struct(Prediction)527_storage))",
+            "contract": "MeerkatCompetitionV1",
+            "src": "contracts\\MeerkatCompetition.sol:38"
+          },
+          {
+            "label": "predictionGameIds",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_address,t_array(t_uint256)dyn_storage)",
+            "contract": "MeerkatCompetitionV1",
+            "src": "contracts\\MeerkatCompetition.sol:39"
+          },
+          {
+            "label": "activeUsers",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "MeerkatCompetitionV1",
+            "src": "contracts\\MeerkatCompetition.sol:40"
+          },
+          {
+            "label": "userIds",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_array(t_address)dyn_storage",
+            "contract": "MeerkatCompetitionV1",
+            "src": "contracts\\MeerkatCompetition.sol:41"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)dyn_storage": {
+            "label": "uint256[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_array(t_uint256)dyn_storage)": {
+            "label": "mapping(address => uint256[])",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_struct(Prediction)527_storage))": {
+            "label": "mapping(address => mapping(uint256 => struct MeerkatCompetitionV1.Prediction))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Game)520_storage)": {
+            "label": "mapping(uint256 => struct MeerkatCompetitionV1.Game)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Prediction)527_storage)": {
+            "label": "mapping(uint256 => struct MeerkatCompetitionV1.Prediction)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Game)520_storage": {
+            "label": "struct MeerkatCompetitionV1.Game",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "homeCompetitor",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "awayCompetitor",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "startTime",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "homeScore",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "awayScore",
+                "type": "t_uint8",
+                "offset": 1,
+                "slot": "4"
+              },
+              {
+                "label": "isFinalized",
+                "type": "t_bool",
+                "offset": 2,
+                "slot": "4"
+              }
+            ],
+            "numberOfBytes": "160"
+          },
+          "t_struct(Prediction)527_storage": {
+            "label": "struct MeerkatCompetitionV1.Prediction",
+            "members": [
+              {
+                "label": "gameId",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "homeScore",
+                "type": "t_uint8",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "awayScore",
+                "type": "t_uint8",
+                "offset": 1,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    }
+  }
+}

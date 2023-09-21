@@ -1,8 +1,10 @@
 const { ethers, upgrades } = require('hardhat');
 
 async function main() {
-	const MeerkatV1 = await ethers.getContractFactory('MeerkatV1');
-	const proxy = await upgrades.deployProxy(MeerkatV1);
+	const MeerkatCompetitionV1 = await ethers.getContractFactory(
+		'MeerkatCompetitionV1'
+	);
+	const proxy = await upgrades.deployProxy(MeerkatCompetitionV1);
 	await proxy.deployed();
 
 	const implementationAddress = await upgrades.erc1967.getImplementationAddress(
