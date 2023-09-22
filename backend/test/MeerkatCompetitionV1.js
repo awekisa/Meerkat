@@ -449,8 +449,6 @@ describe('MeerkatCompetitionV1', function () {
 
 		const userPoints = await proxy.getPoints();
 
-		console.log(userPoints);
-
 		expect(userPoints.length).to.equal(3);
 
 		const [
