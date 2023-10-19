@@ -8,8 +8,8 @@ import { mainnet, sepolia } from 'wagmi/chains';
 const config = createConfig(
 	getDefaultConfig({
 		// Required API Keys
-		alchemyId: process.env.ALCHEMY_API_KEY, // or infuraId
-		walletConnectProjectId: 'demo',
+		alchemyId: process.env.REACT_APP_ALCHEMY_API_KEY, // or infuraId
+		walletConnectProjectId: '31a18ca4eae2b5ce010e299d9fac315b',
 
 		// Required
 		appName: 'You Create Web3 Dapp',

@@ -4,9 +4,9 @@ const nextConfig = {};
 module.exports = nextConfig;
 
 module.exports = {
-  reactStrictMode: false,
-  webpack: (config) => {
-    config.resolve.fallback = { fs: false, net: false };
-    return config;
-  },
+	reactStrictMode: false,
+	webpack: (config) => {
+		config.resolve.fallback = { fs: false, net: false };
+		return config;
+	},
 };

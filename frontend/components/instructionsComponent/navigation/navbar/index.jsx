@@ -1,15 +1,17 @@
+'use client';
 
-'use client'
+import { ConnectKitButton } from 'connectkit';
+import styles from './Navbar.module.css';
+import { useAccount } from 'wagmi';
 
-import { ConnectKitButton } from "connectkit";
-import styles from "./Navbar.module.css";
 export default function Navbar() {
-  return (
-    <nav className={styles.navbar}>
-      <a href="https://alchemy.com/?a=create-web3-dapp" target={"_blank"}>
-        create-web3-dapp
-      </a>
-      <ConnectKitButton />
-    </nav>
-  );
+	const { address } = useAccount();
+
+	return (
+		<nav className={styles.navbar}>
+			<h1>Meerkat</h1>
+			{address === '0x32BE706cD0cfc57B558eC8dCA3b44cA7F3ca75e2' ?? <AddGame />}
+			<ConnectKitButton />
+		</nav>
+	);
 }

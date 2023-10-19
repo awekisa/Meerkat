@@ -4,6 +4,7 @@ pragma abicoder v2;
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "hardhat/console.sol";
+import "./MeerkatV1.sol";
 
 contract MeerkatCompetitionV1 is Initializable {
     struct Game {
@@ -39,10 +40,13 @@ contract MeerkatCompetitionV1 is Initializable {
     mapping(address => uint[]) private predictionGameIds;
     mapping(address => bool) private activeUsers;
     address[] private userIds;
+    event CompetitionInitialized(string _name, address _owner);
 
     function initialize(string memory _name) public initializer {
         name = _name;
         owner = msg.sender;
+
+        emit CompetitionInitialized(_name, owner);
     }
 
     // games
