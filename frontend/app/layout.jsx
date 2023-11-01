@@ -7,8 +7,9 @@ import { mainnet, sepolia } from 'wagmi/chains';
 
 const config = createConfig(
 	getDefaultConfig({
+		// todo: remove from code
 		// Required API Keys
-		alchemyId: process.env.REACT_APP_ALCHEMY_API_KEY, // or infuraId
+		alchemyId: 'vP5-n7XKcnuYj86GwealPvQmY4ZgK4G9', // or infuraId
 		walletConnectProjectId: '31a18ca4eae2b5ce010e299d9fac315b',
 
 		// Required

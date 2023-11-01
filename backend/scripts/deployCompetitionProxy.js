@@ -5,7 +5,7 @@ async function main() {
 		'MeerkatCompetitionV1'
 	);
 	const proxy = await upgrades.deployProxy(MeerkatCompetitionV1, [
-		'First Competition',
+		'Second Competition',
 	]);
 	await proxy.waitForDeployment();
 
